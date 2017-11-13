@@ -51,8 +51,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604"
-        tools:layout_editor_absoluteX="147dp" />
+        app:layout_constraintVertical_bias="0.604" />
 
     <TextView
         android:id="@+id/textView10"
@@ -91,8 +90,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <ImageButton
         android:id="@+id/SolarSystemBt"

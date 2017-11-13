@@ -2,17 +2,18 @@ package dit.cs.ljh.moonproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.app.AlertDialog;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class Constellation_Now_Season extends AppCompatActivity {
@@ -61,6 +62,7 @@ public class Constellation_Now_Season extends AppCompatActivity {
         }
 
 
+
 //        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yy/MM/dd HH:mm");
 //        String time = dateFormat.format(new Date(System.currentTimeMillis()));
 //        date.setText("현재 시간 : " + time);
@@ -83,20 +85,33 @@ public class Constellation_Now_Season extends AppCompatActivity {
 //                finish();
 //            }
 //        });
+
     }
 
     //액션 바 추가
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_calendar, menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) { //검색어 입력완료시 동작
+                Toast.makeText(Constellation_Now_Season.this, s, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) { //검색어가 바뀔때 마다 동작
+                return false;
+            }
+        });
         return true;
     }
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        final ImageView ConstellationIV2 = (ImageView)findViewById(R.id.Constellation);
+        final ImageView ConstellationIV = (ImageView)findViewById(R.id.Constellation);
 
         if (id == R.id.home) {
             Intent intent7 = new Intent(getApplicationContext(), Main.class);
@@ -118,7 +133,7 @@ public class Constellation_Now_Season extends AppCompatActivity {
                     Integer[] season = {R.drawable.spring, R.drawable.summer, R.drawable.autumnal, R.drawable.winter};
                     String[] season2 = getResources().getStringArray(R.array.season);
                     for (int i=0;i<=season2[mSelect].length();i++){
-                        ConstellationIV2.setImageResource(season[mSelect]);
+                        ConstellationIV.setImageResource(season[mSelect]);
                     }
                 }
             }).setNegativeButton("취소", null).show();
@@ -129,7 +144,6 @@ public class Constellation_Now_Season extends AppCompatActivity {
             startActivity(intent7);
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
