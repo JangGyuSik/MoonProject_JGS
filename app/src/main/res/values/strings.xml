@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MoonProject</string>
+    <string name="moon_today">오늘의 달모양</string>
+    <string name="moon_month">월력보기</string>
+    <string name="constellation">계절 별자리 맵</string>
+    <string name="solar_system">현재 태양계</string>
+    <string name="planet_detail">행성상세보기</string>
+</resources>

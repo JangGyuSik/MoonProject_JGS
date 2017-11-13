@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="solar_array">
+
+        <item>1월 1일</item>
+        <item>2월 1일</item>
+        <item>3월 1일</item>
+        <item>4월 1일</item>
+        <item>5월 1일</item>
+        <item>6월 1일</item>
+        <item>7월 1일</item>
+        <item>8월 1일</item>
+        <item>9월 1일</item>
+        <item>10월 1일</item>
+        <item>11월 1일</item>
+        <item>12월 1일</item>
+
+    </string-array>
+
+</resources>

@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.administrator.myapplication.MainActivity">
+
+
+    <item
+        android:id="@+id/back"
+        android:icon="@drawable/ic_action_back"
+        android:title="back"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_action_home"
+        android:title="home"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/ic_action_calendar"
+        android:title="calendar"
+        app:showAsAction="always" />
+</menu>
