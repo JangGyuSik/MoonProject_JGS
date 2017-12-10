@@ -115,7 +115,7 @@ public class Moon_Today extends AppCompatActivity {
             public void run() {
                 try {
                     String Key = date.getText().toString(); //날짜 별로 데이터 받아오기
-                    URL url = new URL("http://59.22.91.148/moon.php");
+                    URL url = new URL("http://121.175.131.102/moon.php");
                     HttpURLConnection http;
                     http = (HttpURLConnection) url.openConnection();
                     http.setDefaultUseCaches(false);

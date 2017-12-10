@@ -21,7 +21,6 @@
         <activity android:name=".Moon_Today" />
         <activity android:name=".Moon_Month" />
         <activity android:name=".Constellation_Now_Season" />
-        <activity android:name=".Search" />
         <activity android:name=".Solar_System" />
         <activity android:name=".Constellation_Detail" />
         <activity android:name=".Planet_detail" />

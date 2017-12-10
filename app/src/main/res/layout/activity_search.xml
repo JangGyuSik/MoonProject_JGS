@@ -14,19 +14,6 @@
         tools:layout_editor_absoluteX="140dp"
         tools:layout_editor_absoluteY="28dp" />
 
-    <ImageButton
-        android:id="@+id/searchBack"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/buttonback"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
-
     <ScrollView
         android:layout_width="344dp"
         android:layout_height="0dp"

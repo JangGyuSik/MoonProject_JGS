@@ -2,23 +2,36 @@ package dit.cs.ljh.moonproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.app.AlertDialog;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.lang.Thread;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 
 
 public class Constellation_Now_Season extends AppCompatActivity {
 
+    String data;
+    private String resultConstellation;
+    Handler handler = new Handler();
     int mSelect = 0;
+    String ConstellationData1 = "";
+    String ConstellationData2 = "";
+    String ConstellationData3 = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,22 +104,159 @@ public class Constellation_Now_Season extends AppCompatActivity {
     //액션 바 추가
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
+
+
         getMenuInflater().inflate(R.menu.menu_search, menu);
         MenuItem searchItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) { //검색어 입력완료시 동작
-                Toast.makeText(Constellation_Now_Season.this, s, Toast.LENGTH_SHORT).show();
+
+            public boolean onQueryTextSubmit(final String s) { //검색어 입력완료시 동작
+                //Toast.makeText(Constellation_Now_Season.this, s, Toast.LENGTH_SHORT).show();
+
+                new Thread() {
+                    public void run() {
+                        try {
+                            String Key = s.toString(); //
+                            URL url = new URL("http://121.175.131.102/constellation.php");
+                            HttpURLConnection http;
+                            http = (HttpURLConnection) url.openConnection();
+                            http.setDefaultUseCaches(false);
+                            http.setDoInput(true);
+                            http.setRequestMethod("POST");
+                            http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+                            StringBuffer buffer = new StringBuffer();
+                            buffer.append("name").append("=").append(Key);
+
+                            OutputStreamWriter outputStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+                            outputStream.write(buffer.toString());
+                            outputStream.flush();
+
+                            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
+                            BufferedReader reader = new BufferedReader(tmp);
+                            StringBuilder builder = new StringBuilder();
+                            String str;
+                            while ((str = reader.readLine()) != null) {
+                                builder.append(str);
+                            }
+
+                            resultConstellation = builder.toString();
+                            final String[] Result = resultConstellation.split("/");
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i("검색값 : ", s);
+
+                                    if (Result[0] == "") {
+                                        Toast.makeText(Constellation_Now_Season.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                            Log.i("이름 : ", Result[0]);
+                            Log.i("계절 : ", Result[1]);
+                            Log.i("신화 : ", Result[2]);
+//
+                            ConstellationData1 = Result[0];
+                            ConstellationData2 = Result[1];
+                            ConstellationData3 = Result[2];
+
+
+                        Intent intent = new Intent(getApplicationContext(), Constellation_Detail.class);
+                                        intent.putExtra("name", ConstellationData1);
+                                        intent.putExtra("season", ConstellationData2);
+                                        intent.putExtra("myth", ConstellationData3);
+                        startActivity(intent);
+                        finish();
+//                                        Toast.makeText(Constellation_Now_Season.this, ConstellationData1 + "자리", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e("", "쓰레드 Error", e);
+                        }
+                    }
+                }.start();
+
+//                Threads thread = new Threads();
+//                thread.start();
+
                 return false;
             }
             @Override
             public boolean onQueryTextChange(String s) { //검색어가 바뀔때 마다 동작
+                data = s;
+                Log.i("검색변경값 : ", data);
                 return false;
             }
         });
+
         return true;
+
     }
+
+//    class Threads extends Thread{
+//        public void run() {
+//            try {
+//                String Key = data.toString(); //
+//                URL url = new URL("http://121.175.131.102/constellation.php");
+//                HttpURLConnection http;
+//                http = (HttpURLConnection) url.openConnection();
+//                http.setDefaultUseCaches(false);
+//                http.setDoInput(true);
+//                http.setRequestMethod("POST");
+//                http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+//                StringBuffer buffer = new StringBuffer();
+//                buffer.append("name").append("=").append(Key);
+//
+//                OutputStreamWriter outputStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+//                outputStream.write(buffer.toString());
+//                outputStream.flush();
+//
+//                InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
+//                BufferedReader reader = new BufferedReader(tmp);
+//                StringBuilder builder = new StringBuilder();
+//                String str;
+//                while ((str = reader.readLine()) != null) {
+//                    builder.append(str);
+//                }
+//
+//                resultConstellation = builder.toString();
+//                final String[] Result = resultConstellation.split("/");
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.i("검색값 : ", data);
+//
+//                        if (Result[0] == "") {
+//                            Toast.makeText(Constellation_Now_Season.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
+//
+//                        } else {
+//                            Log.i("이름 : ", Result[0]);
+//                            Log.i("계절 : ", Result[1]);
+//                            Log.i("신화 : ", Result[2]);
+//
+//                            ConstellationData1 = Result[0];
+//                            ConstellationData2 = Result[1];
+//                            ConstellationData3 = Result[2];
+//
+//
+//                        Intent intent = new Intent(getApplicationContext(), Constellation_Detail.class);
+//                                        intent.putExtra(ConstellationData1, "name");
+//                                        intent.putExtra(ConstellationData2, "season");
+//                                        intent.putExtra(ConstellationData3, "myth");
+//                        startActivity(intent);
+//                        finish();
+////                                        Toast.makeText(Constellation_Now_Season.this, ConstellationData1 + "자리", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                });
+//            } catch (Exception e) {
+//                Log.e("", "쓰레드 Error", e);
+//            }
+//        }
+//    }
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item) {
@@ -147,3 +297,4 @@ public class Constellation_Now_Season extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
