@@ -42,31 +42,31 @@ public class Solar_System extends AppCompatActivity {
         int day = m.get(Calendar.DATE);
         date1.setText("현재날짜 : " + year + "년 " + month + "월 " + day + "일 ");
 
-        //현재 달에 맞는 이미지 출력
+        //현재 달에 맞는 태양계 이미지 출력
         if (month==2) {
-            SolarSystem.setImageResource(R.drawable.solarsystem11);
+            SolarSystem.setImageResource(R.drawable.solarsystem2);
         } else if (month==3) {
-            SolarSystem.setImageResource(R.drawable.solarsystem22);
+            SolarSystem.setImageResource(R.drawable.solarsystem3);
         } else if (month==4) {
-            SolarSystem.setImageResource(R.drawable.solarsystem33);
+            SolarSystem.setImageResource(R.drawable.solarsystem4);
         } else if (month==5) {
-            SolarSystem.setImageResource(R.drawable.solarsystem44);
+            SolarSystem.setImageResource(R.drawable.solarsystem5);
         } else if (month==6) {
-            SolarSystem.setImageResource(R.drawable.solarsystem55);
+            SolarSystem.setImageResource(R.drawable.solarsystem6);
         } else if (month==7) {
-            SolarSystem.setImageResource(R.drawable.solarsystem66);
+            SolarSystem.setImageResource(R.drawable.solarsystem7);
         } else if (month==8) {
-            SolarSystem.setImageResource(R.drawable.solarsystem77);
+            SolarSystem.setImageResource(R.drawable.solarsystem8);
         } else if (month==9) {
-            SolarSystem.setImageResource(R.drawable.solarsystem88);
+            SolarSystem.setImageResource(R.drawable.solarsystem9);
         } else if (month==10) {
-            SolarSystem.setImageResource(R.drawable.solarsystem99);
+            SolarSystem.setImageResource(R.drawable.solarsystem10);
         } else if (month==11) {
-            SolarSystem.setImageResource(R.drawable.solarsystem101);
+            SolarSystem.setImageResource(R.drawable.solarsystem11);
         } else if (month==12) {
-            SolarSystem.setImageResource(R.drawable.solarsystem111);
+            SolarSystem.setImageResource(R.drawable.solarsystem12);
         }  else if (month==1) {
-            SolarSystem.setImageResource(R.drawable.solarsystem121);
+            SolarSystem.setImageResource(R.drawable.solarsystem1);
         }
 
         //날짜을 선택하여 태양계 출력
@@ -142,12 +142,12 @@ public class Solar_System extends AppCompatActivity {
             }).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Integer[] solarcount2 = {R.drawable.solarsystem11, R.drawable.solarsystem22, R.drawable.solarsystem33, R.drawable.solarsystem44, R.drawable.solarsystem55, R.drawable.solarsystem66, R.drawable.solarsystem77, R.drawable.solarsystem88, R.drawable.solarsystem99, R.drawable.solarsystem101, R.drawable.solarsystem111, R.drawable.solarsystem121};
+                    Integer[] solarcount2 = {R.drawable.solarsystem1, R.drawable.solarsystem2, R.drawable.solarsystem3, R.drawable.solarsystem4, R.drawable.solarsystem5, R.drawable.solarsystem6, R.drawable.solarsystem7, R.drawable.solarsystem8, R.drawable.solarsystem9, R.drawable.solarsystem10, R.drawable.solarsystem11, R.drawable.solarsystem12};
                     String[] solarcount = getResources().getStringArray(R.array.solar_array);
                     for (int i=0;i<=solarcount[mSelect].length();i++){
                         SolarSystem.setImageResource(solarcount2[mSelect]);
                     }
-                    date2.setText("선택날짜 : 2017년 " + solarcount[mSelect]);
+                    date2.setText("선택날짜 : 2018년 " + solarcount[mSelect]);
                 }
             }).setNegativeButton("취소", null).show();
         }

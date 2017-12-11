@@ -25,9 +25,19 @@ public class Moon_Month extends AppCompatActivity {
         int month = m.get(Calendar.MONTH)+1;
 
         //월에 맞게 달력 출력
-        if (month==6) {
+        if (month==1) {
+            moonCalendar.setImageResource(R.drawable.calendar1);
+        }else if (month==2) {
+            moonCalendar.setImageResource(R.drawable.calendar2);
+        }else if (month==3) {
+            moonCalendar.setImageResource(R.drawable.calendar3);
+        }else if (month==4) {
+            moonCalendar.setImageResource(R.drawable.calendar4);
+        }else if (month==5) {
+            moonCalendar.setImageResource(R.drawable.calendar5);
+        }else if (month==6) {
             moonCalendar.setImageResource(R.drawable.calendar6);
-        } else if (month==7) {
+        }else if (month==7) {
             moonCalendar.setImageResource(R.drawable.calendar7);
         } else if (month==8) {
             moonCalendar.setImageResource(R.drawable.calendar8);

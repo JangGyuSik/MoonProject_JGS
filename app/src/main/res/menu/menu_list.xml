@@ -11,12 +11,6 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/list"
-        android:icon="@drawable/ic_action_list"
-        android:title="list"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/back"
         android:icon="@drawable/ic_action_back"
         android:title="back"
@@ -26,11 +20,5 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_action_home"
         android:title="home"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/calendar"
-        android:icon="@drawable/ic_action_calendar"
-        android:title="calendar"
         app:showAsAction="always" />
 </menu>

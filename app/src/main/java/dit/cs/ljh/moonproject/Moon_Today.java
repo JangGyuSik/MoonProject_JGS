@@ -185,6 +185,3 @@ public class Moon_Today extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-
-
-

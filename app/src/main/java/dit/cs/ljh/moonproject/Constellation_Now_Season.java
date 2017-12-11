@@ -29,9 +29,6 @@ public class Constellation_Now_Season extends AppCompatActivity {
     private String resultConstellation;
     Handler handler = new Handler();
     int mSelect = 0;
-    String ConstellationData1 = "";
-    String ConstellationData2 = "";
-    String ConstellationData3 = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,31 +146,30 @@ public class Constellation_Now_Season extends AppCompatActivity {
                                 public void run() {
                                     Log.i("검색값 : ", s);
 
-                                    if (Result[0] == "") {
+                                    if (Result[1] == "") {
                                         Toast.makeText(Constellation_Now_Season.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
                                     } else {
-                            Log.i("이름 : ", Result[0]);
-                            Log.i("계절 : ", Result[1]);
-                            Log.i("신화 : ", Result[2]);
-//
-                            ConstellationData1 = Result[0];
-                            ConstellationData2 = Result[1];
-                            ConstellationData3 = Result[2];
 
+                                        Log.i("번호 : ", Result[0]);
+                                        Log.i("이름 : ", Result[1]);
+                                        Log.i("계절 : ", Result[2]);
+                                        Log.i("신화 : ", Result[3]);
 
-                        Intent intent = new Intent(getApplicationContext(), Constellation_Detail.class);
-                                        intent.putExtra("name", ConstellationData1);
-                                        intent.putExtra("season", ConstellationData2);
-                                        intent.putExtra("myth", ConstellationData3);
-                        startActivity(intent);
-                        finish();
-//                                        Toast.makeText(Constellation_Now_Season.this, ConstellationData1 + "자리", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), Constellation_Detail.class);
+                                        intent.putExtra("num","1"); //액티비티 구별을 위함
+                                        intent.putExtra("count",Result[0]);
+                                        intent.putExtra("name", Result[1]);
+                                        intent.putExtra("season", Result[2]);
+                                        intent.putExtra("myth", Result[3]);
+                                        startActivity(intent);
+                                        finish();
+//                                      Toast.makeText(Constellation_Now_Season.this, ConstellationData1 + "자리", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }
                             });
                         } catch (Exception e) {
-                            Log.e("", "쓰레드 Error", e);
+                            Log.e("", "검색 Error", e);
                         }
                     }
                 }.start();
@@ -264,8 +260,8 @@ public class Constellation_Now_Season extends AppCompatActivity {
         final ImageView ConstellationIV = (ImageView)findViewById(R.id.Constellation);
 
         if (id == R.id.home) {
-            Intent intent7 = new Intent(getApplicationContext(), Main.class);
-            startActivity(intent7);
+            Intent intent = new Intent(getApplicationContext(), Main.class);
+            startActivity(intent);
             finish();
         }
 
@@ -290,8 +286,14 @@ public class Constellation_Now_Season extends AppCompatActivity {
         }
 
         if (id == R.id.back){
-            Intent intent7 = new Intent(getApplicationContext(), Main.class);
-            startActivity(intent7);
+            Intent intent = new Intent(getApplicationContext(), Main.class);
+            startActivity(intent);
+            finish();
+        }
+
+        if (id == R.id.list){
+            Intent intent = new Intent(getApplicationContext(), Constellation_List.class);
+            startActivity(intent);
             finish();
         }
         return super.onOptionsItemSelected(item);
