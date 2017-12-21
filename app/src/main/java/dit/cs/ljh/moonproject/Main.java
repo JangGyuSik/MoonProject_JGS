@@ -62,6 +62,7 @@ public class Main extends AppCompatActivity {
     long currentTime = System.currentTimeMillis();
     //2초 이내에 뒤로가기 버튼을 또 터치하면 앱 종료.
         if(currentTime - lastTimeBackPressed < 2000){
+            System.exit(0); //앱 종료
             finish();
         } else {
             lastTimeBackPressed = currentTime;

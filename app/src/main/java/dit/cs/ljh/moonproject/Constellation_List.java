@@ -41,9 +41,7 @@ public class Constellation_List extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_constellation__list);
-
 
         list = (ListView)findViewById(R.id.list);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
@@ -61,7 +59,7 @@ public class Constellation_List extends AppCompatActivity {
                                 str = adapter.getItem(position);
                                 Key = str.toString();
                             }
-                            URL url = new URL("http://121.175.131.102/constellation.php");
+                            URL url = new URL("http://121.175.131.89/constellation.php");
                             HttpURLConnection http;
                             http = (HttpURLConnection) url.openConnection();
                             http.setDefaultUseCaches(false);
@@ -112,7 +110,6 @@ public class Constellation_List extends AppCompatActivity {
                         }
                     }
                 }.start();
-
             }
         });
     }

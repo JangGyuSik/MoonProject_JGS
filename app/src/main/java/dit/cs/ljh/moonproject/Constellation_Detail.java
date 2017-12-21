@@ -90,7 +90,7 @@ public class Constellation_Detail extends AppCompatActivity {
                     public void run() {
                         try {
                             String Key = s.toString(); //
-                            URL url = new URL("http://121.175.131.102/constellation.php");
+                            URL url = new URL("http://121.175.131.89/constellation.php");
                             HttpURLConnection http;
                             http = (HttpURLConnection) url.openConnection();
                             http.setDefaultUseCaches(false);

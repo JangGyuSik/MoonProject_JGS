@@ -164,14 +164,11 @@ public class Solar_System extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     //행성상세정보 화면으로 넘어가기
                     String[] name = getResources().getStringArray(R.array.planet_array);
-
                     planetText = name[mSelect];
-                    for(int i=0;i<=mSelect;i++) {
-                        Intent intent = new Intent(getApplicationContext(), Planet_detail.class);
-                        intent.putExtra("planetText", planetText);
-                        startActivity(intent);
-                        finish();
-                    }
+                    Intent intent = new Intent(getApplicationContext(), Planet_detail.class);
+                    intent.putExtra("planetText", planetText);
+                    startActivity(intent);
+                    finish();
                 }
             }).setNegativeButton("취소", null).show();
         }

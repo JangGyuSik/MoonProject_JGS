@@ -117,7 +117,7 @@ public class Constellation_Now_Season extends AppCompatActivity {
                     public void run() {
                         try {
                             String Key = s.toString(); //
-                            URL url = new URL("http://121.175.131.102/constellation.php");
+                            URL url = new URL("http://121.175.131.89/constellation.php");
                             HttpURLConnection http;
                             http = (HttpURLConnection) url.openConnection();
                             http.setDefaultUseCaches(false);
@@ -146,7 +146,7 @@ public class Constellation_Now_Season extends AppCompatActivity {
                                 public void run() {
                                     Log.i("검색값 : ", s);
 
-                                    if (Result[1] == "") {
+                                    if (Result[0] == "") {
                                         Toast.makeText(Constellation_Now_Season.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
                                     } else {
 
@@ -190,69 +190,6 @@ public class Constellation_Now_Season extends AppCompatActivity {
         return true;
 
     }
-
-//    class Threads extends Thread{
-//        public void run() {
-//            try {
-//                String Key = data.toString(); //
-//                URL url = new URL("http://121.175.131.102/constellation.php");
-//                HttpURLConnection http;
-//                http = (HttpURLConnection) url.openConnection();
-//                http.setDefaultUseCaches(false);
-//                http.setDoInput(true);
-//                http.setRequestMethod("POST");
-//                http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
-//                StringBuffer buffer = new StringBuffer();
-//                buffer.append("name").append("=").append(Key);
-//
-//                OutputStreamWriter outputStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
-//                outputStream.write(buffer.toString());
-//                outputStream.flush();
-//
-//                InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
-//                BufferedReader reader = new BufferedReader(tmp);
-//                StringBuilder builder = new StringBuilder();
-//                String str;
-//                while ((str = reader.readLine()) != null) {
-//                    builder.append(str);
-//                }
-//
-//                resultConstellation = builder.toString();
-//                final String[] Result = resultConstellation.split("/");
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Log.i("검색값 : ", data);
-//
-//                        if (Result[0] == "") {
-//                            Toast.makeText(Constellation_Now_Season.this, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show();
-//
-//                        } else {
-//                            Log.i("이름 : ", Result[0]);
-//                            Log.i("계절 : ", Result[1]);
-//                            Log.i("신화 : ", Result[2]);
-//
-//                            ConstellationData1 = Result[0];
-//                            ConstellationData2 = Result[1];
-//                            ConstellationData3 = Result[2];
-//
-//
-//                        Intent intent = new Intent(getApplicationContext(), Constellation_Detail.class);
-//                                        intent.putExtra(ConstellationData1, "name");
-//                                        intent.putExtra(ConstellationData2, "season");
-//                                        intent.putExtra(ConstellationData3, "myth");
-//                        startActivity(intent);
-//                        finish();
-////                                        Toast.makeText(Constellation_Now_Season.this, ConstellationData1 + "자리", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
-//            } catch (Exception e) {
-//                Log.e("", "쓰레드 Error", e);
-//            }
-//        }
-//    }
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item) {
